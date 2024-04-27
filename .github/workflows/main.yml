@@ -1,0 +1,39 @@
+name: PYTHON TEST WITH GITHUB ACTIONS
+
+on:
+  push:
+    branches:
+      - main  # Modify this according to your branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Set the Python version you want to use
+
+    - name: Install dependencies
+      run: |
+        make install
+        
+    - name: Lint with pylint
+      run: |
+        make lint
+
+    - name: Test with pytest
+      run: |
+        make test
+
+    - name: Format Code
+      run: |
+        make format
+    
+        
+    
+    # Add more steps here as needed, such as running tests, linting, etc.
