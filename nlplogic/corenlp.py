@@ -1,4 +1,4 @@
-from TextBlob import textblob
+from textblob import TextBlob
 import wikipedia
 
 def search_wikipedia(name):
@@ -13,7 +13,7 @@ def summarize_wikipedia(name):
 
 def get_text_blob(text):
     """Gets text blob object and returns it"""
-    blob = textblob(text)
+    blob = TextBlob(text)
     return blob
 
 def get_phrases(name):
@@ -22,3 +22,8 @@ def get_phrases(name):
     blob = get_text_blob(text)
     phrases  = blob.noun_phrases
     return phrases
+
+
+
+text= "Los_Angeles_Lakers"
+print(get_text_blob(text))
